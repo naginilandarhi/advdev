@@ -1,8 +1,10 @@
 package com.hotel.core.development;
 
 import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Service;
 
-@Component
+@Component(immediate = true,metatype = true,label ="My service")
+@Service(MyFirstOsgiComponent.class)
 
 public class MyFirstOsgiComponentImpl implements MyFirstOsgiComponent {
 

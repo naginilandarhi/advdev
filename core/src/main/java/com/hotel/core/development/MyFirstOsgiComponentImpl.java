@@ -1,17 +1,15 @@
 package com.hotel.core.development;
 
 import org.apache.felix.scr.annotations.Component;
+import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.Service;
 
-@Component(immediate = true,metatype = true,label ="My service")
-@Service(MyFirstOsgiComponent.class)
-
+@Component(metatype=true,label="MyFirstOsgiComponent",description = "Simple demo for cron-job like task with properties")
+@Service(value=MyFirstOsgiComponent.class)
+@Property(label="tick yes or no:",name="osgi.property", boolValue=false,
+description = "Whether or not to schedule this task concurrently")
 public class MyFirstOsgiComponentImpl implements MyFirstOsgiComponent {
 
-	@Override
-	public String displayMessage() {
-		// TODO Auto-generated method stub
-		 return "Welcome to AEM CQ5 Tutorials:- Your Message is";
-	}
+	
 
 }

@@ -13,7 +13,7 @@ import org.osgi.service.component.ComponentContext;
 @Properties({
 @Property(label="tick yes or no:",name="osgi.property", boolValue=false,
 description = "Whether or not to schedule this task concurrently"),
-@Property( label = "Author Gender", description = "Describe Author Gender",
+@Property( label = "Author Gender",name="gender", description = "Describe Author Gender",
 options = { @PropertyOption(name = "Male", value = "1. Male"),
 			@PropertyOption(name = "Female", value = "2. Female") }, 
 			value = "Female")
@@ -27,15 +27,27 @@ public class MyFirstOsgiComponentImpl implements MyFirstOsgiComponent {
 	public String checkBox() {
 		// TODO Auto-generated method stub
 		if(context.getProperties().get("osgi.property").toString().equalsIgnoreCase("true"))
-		{return "true";}
+		{return "check box is checked:true";}
 		else
-			return "false";
+			return "check box is checked:false";
+		
+		
+	}
+	@Override
+	public String gender() {
+		// TODO Auto-generated method stub
+		if(context.getProperties().get("gender").toString().equalsIgnoreCase("male"))
+		{return "gender selected:male";}
+		else
+			return "gender selected:female";
 	}
 	@Activate
 	public void activatemethod(ComponentContext context1)
 	{
 		context=context1;
 	}
+
+	
 
 	
 

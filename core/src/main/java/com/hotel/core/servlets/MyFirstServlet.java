@@ -27,6 +27,7 @@ public class MyFirstServlet extends SlingAllMethodsServlet {
 		
 		
 		response.getWriter().print(service.checkBox());
+		response.getWriter().println(service.gender());
 		
 	}
 	

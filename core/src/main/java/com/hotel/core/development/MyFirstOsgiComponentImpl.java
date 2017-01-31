@@ -5,7 +5,9 @@ import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Properties;
 import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.PropertyOption;
+import org.apache.felix.scr.annotations.PropertyUnbounded;
 import org.apache.felix.scr.annotations.Service;
+import org.apache.sling.commons.osgi.PropertiesUtil;
 import org.osgi.service.component.ComponentContext;
 
 @Component(immediate=true,metatype=true,label="MyFirstOsgiComponent",description = "Simple demo ")
@@ -21,8 +23,17 @@ options = { @PropertyOption(name = "Male", value = "1. Male"),
 
 public class MyFirstOsgiComponentImpl implements MyFirstOsgiComponent {
 
+	@Property(value={"English", "Hindi","Telugu"}, unbounded = PropertyUnbounded.ARRAY, label = "Subjects", cardinality = 50, description = "Example for Multi field config") 
+	private static final String MULTI_FIELD = "multifield";
+
+
 	
 	ComponentContext context;
+
+
+
+	private String[] multi_String;
+	
 	@Override
 	public String checkBox() {
 		// TODO Auto-generated method stub
@@ -41,10 +52,14 @@ public class MyFirstOsgiComponentImpl implements MyFirstOsgiComponent {
 		else
 			return "gender selected:female";
 	}
+	
 	@Activate
 	public void activatemethod(ComponentContext context1)
 	{
+		
+		
 		context=context1;
+		this.multi_String=PropertiesUtil.toStringArray(context1.getProperties().get(MULTI_FIELD));
 	}
 
 	

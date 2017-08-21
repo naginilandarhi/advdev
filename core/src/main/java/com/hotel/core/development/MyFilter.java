@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 
 import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.sling.SlingFilter;
+/*changes made by nagini*/
 
 @SlingFilter(order=-700)
 @Property(name="sling.filter.pattern",value="/content/sunbeantry/(.*)")
